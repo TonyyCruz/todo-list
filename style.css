@@ -14,3 +14,13 @@ header {
 #funcionamento {
   font-size: 15px;
 }
+
+#texto-tarefa {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+#criar-tarefa {
+  display: inline-block;
+  border-radius: 30px;
+}
