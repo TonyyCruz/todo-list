@@ -1,0 +1,16 @@
+body {
+  background-color: rgb(160, 200, 155);
+  margin: 0% 3%;
+}
+
+header {
+  margin: 0% -4%;
+  text-align: center;
+  border: 3px solid black;
+  background-color: aquamarine;
+  font-family: 'Righteous', cursive;
+}
+
+#funcionamento {
+  font-size: 15px;
+}
