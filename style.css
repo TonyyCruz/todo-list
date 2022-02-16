@@ -24,3 +24,7 @@ header {
   display: inline-block;
   border-radius: 30px;
 }
+
+#selected-item {
+  background-color: grey;
+}

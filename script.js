@@ -20,3 +20,15 @@ function createListToDo() {
   return li;
 }
 
+list.addEventListener('click', selectedItemColor);
+function selectedItemColor(event) {
+  removeId();
+  event.target.id = 'selected-item';
+  console.log(event.target);
+}
+
+function removeId() {
+  if (document.querySelector('#selected-item') !== null) {
+    document.querySelector('#selected-item').removeAttribute('id');
+  }
+}
