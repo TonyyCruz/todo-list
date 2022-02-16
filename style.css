@@ -26,5 +26,10 @@ header {
 }
 
 #selected-item {
-  background-color: grey;
+  background-color: rgb(128,128,128);
+}
+
+.completed {
+  text-decoration: line-through solid black;
+  color: rgb(202, 7, 7);
 }
