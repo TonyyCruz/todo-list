@@ -28,6 +28,16 @@ header {
 #apaga-tudo {
   background-color: rgb(170, 65, 65);
   border-radius: 30px;
+  display: block;
+  margin: 5px 0px;
+}
+
+#remover-finalizados {
+  background-color: rgb(194, 194, 93);
+  border-radius: 30px;
+  display: block;
+  margin: 5px 0px;
+  /* font-size: 12px; */
 }
 
 #texto-tarefa {
@@ -36,7 +46,7 @@ header {
 }
 
 #lista-tarefas {
-  margin-left: 10px;
+  margin-left: 80px;
 }
 
 #criar-tarefa {

@@ -2,7 +2,6 @@ const button = document.querySelector('#criar-tarefa');
 const input = document.querySelector('#texto-tarefa');
 const list = document.querySelector('#lista-tarefas');
 
-
 button.addEventListener('click', buttonToDoList);
 function buttonToDoList() {
   if (input.value !== '') {
@@ -32,7 +31,6 @@ function removeId() {
 
 list.addEventListener('dblclick', lineThrough)
 function lineThrough(event) {
-  // let lineTest = throughTest(event.target)
   if (event.target.className === 'completed') {
     event.target.classList.remove('completed');
   } else { event.target.classList.add('completed'); }
@@ -45,5 +43,15 @@ function listClear() {
   for (let i = 0; i < listLines; i += 1) {
     let remove = list.children[0];
     list.removeChild(remove);
+  }
+}
+
+const concludedDell = document.querySelector('#remover-finalizados');
+concludedDell.addEventListener('click', deleteConcluded);
+function deleteConcluded() {
+  let concluded = document.querySelectorAll('.completed');
+  for (let i = 0; i< concluded.length; i += 1) {
+    let dell = concluded[i];
+    list.removeChild(dell);
   }
 }
