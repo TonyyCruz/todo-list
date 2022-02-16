@@ -38,8 +38,12 @@ function lineThrough(event) {
   } else { event.target.classList.add('completed'); }
 }
 
-// function throughTest(test) {
-//   if (test.target.style.textDecoration === 'line-through') {
-//     test.classList.remove('completed');
-//   } else { test.classList.add('completed'); }
-// }
+const clearAll = document.querySelector('#apaga-tudo');
+clearAll.addEventListener('click', listClear);
+function listClear() {
+  let listLines = list.children.length;
+  for (let i = 0; i < listLines; i += 1) {
+    let remove = list.children[0];
+    list.removeChild(remove);
+  }
+}
