@@ -57,28 +57,39 @@ function deleteConcluded() {
   }
 }
 
-function addItensToSave(itens) {
+function addItensToSave() {
   for (let i = 0; i < list.children.length; i += 1) {
-    itens.push(list.children[i].innerHTML);
+    let type = list.children[i];
+    let item = list.children[i];
+    console.log(item.innerText);
+
+    localStorage.setItem(i, JSON.stringify([type.className, item.innerText]));
   }
-  return itens;
 }
 
 function saveList() {
   localStorage.clear();
-  // if (localStorage.getItem('lista-tarefas') !== null) {
-  // }
-  localStorage.setItem('lista-tarefas', JSON.stringify([]));
-  let storage = JSON.parse(localStorage.getItem('lista-tarefas'));
-  let storageContents = addItensToSave(storage);
-  localStorage.setItem('lista-tarefas', JSON.stringify(storageContents));
-  console.log(storageContents);
+  addItensToSave();
 }
 salvarTarefas.addEventListener('click', saveList);
 
-function replenishStorage() {
-  let replenish = JSON.parse(localStorage.getItem('lista-tarefas'));
+window.onload = function () {
+  function createListOfStorage(clas, text) {
+    let li = document.createElement('li');
+    li.innerText = text;
+    if (clas !== '') {
+      li.classList.add('completed');
+    }
+    list.appendChild(li);
+  }
 
-  console.log(replenish);
-}
-window.onload = replenishStorage;
+  function addListToStorage() {
+    for (let i = 0; i < localStorage.length; i += 1) {
+      let rCovr = localStorage[i];
+      let rec = JSON.parse(rCovr);
+      console.log(rCovr);
+      createListOfStorage(rec[0], rec[1]);
+    }
+  }
+  addListToStorage();
+};
