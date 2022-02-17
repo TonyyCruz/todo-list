@@ -6,6 +6,7 @@ const concludedDell = document.querySelector('#remover-finalizados');
 const salvarTarefas = document.querySelector('#salvar-tarefas');
 const moveUp = document.querySelector('#mover-cima');
 const moveDown = document.querySelector('#mover-baixo');
+const deleteItem = document.querySelector('#remover-selecionado');
 
 button.addEventListener('click', buttonToDoList);
 function buttonToDoList() {
@@ -110,8 +111,13 @@ function moveBaixo() {
     selectedItem.nextElementSibling.innerText = saveTxt;
     selectedItem.nextElementSibling.className = saveClass;
     selectedItem.nextElementSibling.id = 'selected-item';
-
   }
+}
+
+deleteItem.addEventListener('click', deletSelectedItem);
+function deletSelectedItem() {
+  let itemToDell = document.querySelector('#selected-item');
+  list.removeChild(itemToDell);
 }
 
 window.onload = function () {
