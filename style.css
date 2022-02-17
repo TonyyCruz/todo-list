@@ -1,7 +1,7 @@
 body {
   background-color: rgb(160, 200, 155);
   margin: 0% 5%;
-  font-family: 'Righteous', cursive;
+  font-family: 'Righteous', cursive, sans-serif;
 }
 
 header {
@@ -67,6 +67,7 @@ header {
 }
 
 #texto-tarefa {
+  color: rgb(128, 128, 128);
   display: inline-block;
   margin-right: 5px;
 }
@@ -81,7 +82,7 @@ header {
 }
 
 #selected-item {
-  background-color: rgb(128,128,128);
+  background-color: rgb(128, 128, 128);
 }
 
 .completed {

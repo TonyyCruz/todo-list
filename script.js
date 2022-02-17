@@ -8,25 +8,18 @@ const moveUp = document.querySelector('#mover-cima');
 const moveDown = document.querySelector('#mover-baixo');
 const deleteItem = document.querySelector('#remover-selecionado');
 
-button.addEventListener('click', buttonToDoList);
-function buttonToDoList() {
-  if (input.value !== '') {
-    let toDo = createListToDo();
-    toDo.innerText = input.value;
-    input.value = '';
-  }
-}
-
 function createListToDo() {
-  let li = document.createElement('li');
+  const li = document.createElement('li');
   list.appendChild(li);
   return li;
 }
 
-list.addEventListener('click', selectedItemColor);
-function selectedItemColor(event) {
-  removeId();
-  event.target.id = 'selected-item';
+function buttonToDoList() {
+  if (input.value !== '') {
+    const toDo = createListToDo();
+    toDo.innerText = input.value;
+    input.value = '';
+  }
 }
 
 function removeId() {
@@ -34,6 +27,13 @@ function removeId() {
     document.querySelector('#selected-item').removeAttribute('id');
   }
 }
+
+list.addEventListener('click', selectedItemColor);
+function selectedItemColor(event) {
+  removeId();
+  event.target.id = 'selected-item';
+}
+button.addEventListener('click', buttonToDoList);
 
 list.addEventListener('dblclick', lineThrough)
 function lineThrough(event) {
