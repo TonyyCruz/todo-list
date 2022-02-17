@@ -83,12 +83,35 @@ selected.removeAttribute('id');
 moveUp.addEventListener('click', moveCima);
 function moveCima() {
   let selectedItem = document.querySelector('#selected-item');
-  let saveTxt = selectedItem.innerText;
-  let saveClass = selectedItem.className;
-  moveCima2(selectedItem);
-  selectedItem.previousElementSibling.innerText = saveTxt;
-  selectedItem.previousElementSibling.className = saveClass;
-  selectedItem.previousElementSibling.id = 'selected-item';
+  if (selectedItem !== null && selectedItem.previousElementSibling !== null) {
+    let saveTxt = selectedItem.innerText;
+    let saveClass = selectedItem.className;
+    moveCima2(selectedItem);
+    selectedItem.previousElementSibling.innerText = saveTxt;
+    selectedItem.previousElementSibling.className = saveClass;
+    selectedItem.previousElementSibling.id = 'selected-item';
+  }
+}
+
+function moveBaixo2(selected) {
+  let sibling = selected.nextElementSibling;
+  selected.innerText = sibling.innerText;
+  selected.className = sibling.className;
+  selected.removeAttribute('id');
+}
+
+moveDown.addEventListener('click', moveBaixo);
+function moveBaixo() {
+  let selectedItem = document.querySelector('#selected-item');
+  if (selectedItem !== null && selectedItem.nextElementSibling !== null) {
+    let saveTxt = selectedItem.innerText;
+    let saveClass = selectedItem.className;
+    moveBaixo2(selectedItem);
+    selectedItem.nextElementSibling.innerText = saveTxt;
+    selectedItem.nextElementSibling.className = saveClass;
+    selectedItem.nextElementSibling.id = 'selected-item';
+
+  }
 }
 
 window.onload = function () {
