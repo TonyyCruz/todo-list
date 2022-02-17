@@ -4,6 +4,8 @@ const list = document.querySelector('#lista-tarefas');
 const clearAll = document.querySelector('#apaga-tudo');
 const concludedDell = document.querySelector('#remover-finalizados');
 const salvarTarefas = document.querySelector('#salvar-tarefas');
+const moveUp = document.querySelector('#mover-cima');
+const moveDown = document.querySelector('#mover-baixo');
 
 button.addEventListener('click', buttonToDoList);
 function buttonToDoList() {
@@ -61,8 +63,6 @@ function addItensToSave() {
   for (let i = 0; i < list.children.length; i += 1) {
     let type = list.children[i];
     let item = list.children[i];
-    console.log(item.innerText);
-
     localStorage.setItem(i, JSON.stringify([type.className, item.innerText]));
   }
 }
@@ -72,6 +72,24 @@ function saveList() {
   addItensToSave();
 }
 salvarTarefas.addEventListener('click', saveList);
+
+function moveCima2(selected) {
+let sibling = selected.previousElementSibling;
+selected.innerText = sibling.innerText;
+selected.className = sibling.className;
+selected.removeAttribute('id');
+}
+
+moveUp.addEventListener('click', moveCima);
+function moveCima() {
+  let selectedItem = document.querySelector('#selected-item');
+  let saveTxt = selectedItem.innerText;
+  let saveClass = selectedItem.className;
+  moveCima2(selectedItem);
+  selectedItem.previousElementSibling.innerText = saveTxt;
+  selectedItem.previousElementSibling.className = saveClass;
+  selectedItem.previousElementSibling.id = 'selected-item';
+}
 
 window.onload = function () {
   function createListOfStorage(clas, text) {
@@ -87,7 +105,6 @@ window.onload = function () {
     for (let i = 0; i < localStorage.length; i += 1) {
       let rCovr = localStorage[i];
       let rec = JSON.parse(rCovr);
-      console.log(rCovr);
       createListOfStorage(rec[0], rec[1]);
     }
   }
