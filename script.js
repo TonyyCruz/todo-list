@@ -1,6 +1,9 @@
 const button = document.querySelector('#criar-tarefa');
 const input = document.querySelector('#texto-tarefa');
 const list = document.querySelector('#lista-tarefas');
+const clearAll = document.querySelector('#apaga-tudo');
+const concludedDell = document.querySelector('#remover-finalizados');
+const salvarTarefas = document.querySelector('#salvar-tarefas');
 
 button.addEventListener('click', buttonToDoList);
 function buttonToDoList() {
@@ -36,7 +39,6 @@ function lineThrough(event) {
   } else { event.target.classList.add('completed'); }
 }
 
-const clearAll = document.querySelector('#apaga-tudo');
 clearAll.addEventListener('click', listClear);
 function listClear() {
   let listLines = list.children.length;
@@ -46,7 +48,6 @@ function listClear() {
   }
 }
 
-const concludedDell = document.querySelector('#remover-finalizados');
 concludedDell.addEventListener('click', deleteConcluded);
 function deleteConcluded() {
   let concluded = document.querySelectorAll('.completed');
@@ -55,3 +56,29 @@ function deleteConcluded() {
     list.removeChild(dell);
   }
 }
+
+function addItensToSave(itens) {
+  for (let i = 0; i < list.children.length; i += 1) {
+    itens.push(list.children[i].innerHTML);
+  }
+  return itens;
+}
+
+function saveList() {
+  localStorage.clear();
+  // if (localStorage.getItem('lista-tarefas') !== null) {
+  // }
+  localStorage.setItem('lista-tarefas', JSON.stringify([]));
+  let storage = JSON.parse(localStorage.getItem('lista-tarefas'));
+  let storageContents = addItensToSave(storage);
+  localStorage.setItem('lista-tarefas', JSON.stringify(storageContents));
+  console.log(storageContents);
+}
+salvarTarefas.addEventListener('click', saveList);
+
+function replenishStorage() {
+  let replenish = JSON.parse(localStorage.getItem('lista-tarefas'));
+
+  console.log(replenish);
+}
+window.onload = replenishStorage;
